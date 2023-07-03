@@ -1,0 +1,238 @@
+$basic-color: #082b48;
+
+//マップ型変数breakpointsを定義
+$breakpoints: (
+    //キー:値
+    'sm': 'screen and (max-width: 576px)',
+    'md': 'screen and (max-width: 768px)',
+    'lg': 'screen and (max-width: 992px)',
+    'xl': 'screen and (max-width: 1200px)'
+    ) !default;
+
+//メディアクエリ用のmixinを定義。デフォ値はmd
+@mixin mq($breakpoint: md) {
+
+    //map-get(マップ型変数, キー)で値を取得
+    @media #{map-get($breakpoints, $breakpoint)} {
+        //この中をカスタムできる
+        @content;
+    }
+}
+
+body {
+    color: $basic-color;
+    font-family: Verdana,
+        Geneva,
+        Tahoma,
+        sans-serif;
+    line-height: 1.5;
+}
+
+a {
+    text-decoration: none;
+    color: #082b48;
+
+    &:hover {
+        opacity: 0.7;
+    }
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
+
+.container {
+    width: 90%;
+    max-width: 960px;
+    margin: auto;
+}
+
+.clear::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+
+/*====================
+header
+=====================*/
+header {
+    background-color: rgba(255, 255, 255, 0.7
+    );
+padding: 10px 0 10px;
+}
+
+.header-left {
+    font-size: 28px;
+    float: left;
+
+    h1 {
+        font-weight: bold;
+    }
+
+    @include mq() {
+        float: none;
+        margin: 10px 0 10px 0;
+
+        h1 {
+            font-size: 25px;
+            text-align: center;
+        }
+    }
+}
+
+.header-right {
+    float: right;
+
+    @include mq() {
+        float: none;
+        margin: 10px 0 10px 0;
+    }
+}
+
+.header-nav {
+    @include mq() {
+        text-align: center;
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+.header-nav-item {
+    line-height: 42px;
+    float: left;
+    padding-left: 60px;
+
+    a {
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    @include mq() {
+        width: 30%;
+        padding: 0;
+        text-align: center;
+        margin: auto;
+        line-height: 24px;
+
+        a {
+            font-size: 16px;
+        }
+
+        #to_about {
+            font-size: 14px;
+        }
+    }
+}
+
+/*===================================
+section共通
+===============================*/
+
+section {
+    padding: 50px 0;
+}
+
+.section-title {
+    font-weight: bold;
+    font-size: 28px;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+/*======================================
+top
+=======================================*/
+
+.top {
+    background-image: url(../img/mencos.png);
+    width: 100%;
+    height: auto;
+    background-size: cover;
+}
+
+.top-wrapper {
+    background-color: rgba(255, 255, 255, 0);
+    padding: 300px 0 40px 0;
+    @include mq() {
+        padding: 250px 0 40px 0;
+    }
+}
+
+.box {
+    background-color: rgba(255, 255, 255, 0.7);
+    text-align: center;
+    width: 60%;
+    margin: auto;
+
+    h2 {
+        font-size: 60px;
+        color: $basic-color;
+        font-weight: bold;
+    }
+    p {
+        font-style: italic;
+    }
+
+    @include mq() {
+        width: 80%;
+        h2 {
+            font-size: 30px;
+        }
+    }
+}
+
+#page-top {
+    display: none;
+    position: fixed;
+    right: 0;
+    bottom: 60px;
+    background-color: #afeddb;
+    padding: 20px;
+    border-radius: 4px;
+}
+
+/*=====================================
+about
+========================================*/
+
+.about-wrapper {
+    display: flex;
+    justify-content: space-between;
+    @include mq() {
+        justify-content: normal;
+        flex-wrap: wrap;
+    }
+}
+
+.about-left {
+    width: 48%;
+    @include mq() {
+        width: 90%;
+        margin: 0 auto 20px auto;
+    }
+}
+
+.about-right {
+    width: 48%;
+    @include mq() {
+        width: 90%;
+        margin: auto;
+    }
+}
+
+/*=====================================
+activity
+======================================*/
+
+.activity-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.activity-item {
+    width: 30%;
+
+}
